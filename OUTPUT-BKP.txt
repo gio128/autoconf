@@ -1,0 +1,23 @@
+=== ENVIANDO BACKUP TFTP para 172.26.96.1 ===
+[+] Conectando ao switch 172.26.102.129 via cisco_ios_telnet (telnet)...
+[+] Conexão estabelecida com sucesso.
+[+] Elevando para modo privilegiado (enable)...
+[+] Enviando configuração para TFTP servidor 172.26.96.1, arquivo SW-AUTOCONF-01_20260827_180124.cfg...
+copy running-config tftp:
+Address or name of remote host []? 172.26.96.1
+Destination filename [sw-autoconf-0SW-AUTOCONF-01_20260827_180124.cfg
+!!
+4323 bytes copied in 1.652 secs (2617 bytes/sec)
+SW-AUTOCONF-01#
+[+] Backup TFTP concluído.
+[+] Conexão encerrada.
+
+=== ENVIANDO BACKUP PARA GITHUB (gio128/autoconf) ===
+[+] Conectando ao switch 172.26.102.129 via cisco_ios_telnet (telnet)...
+[+] Conexão estabelecida com sucesso.
+[+] Elevando para modo privilegiado (enable)...
+[+] Obtendo running-config...
+[+] Enviando arquivo SW-AUTOCONF-01_20260827_180142.cfg para o repositório gio128/autoconf...
+[+] Backup enviado com sucesso! Arquivo: SW-AUTOCONF-01_20260827_180142.cfg
+    URL: https://github.com/gio128/autoconf/blob/main/SW-AUTOCONF-01_20260827_180142.cfg
+[+] Conexão encerrada.

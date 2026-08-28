@@ -1,0 +1,9 @@
+=== VALIDANDO CONFIGURAÇÃO ===
+[+] Conectando ao switch 172.26.102.129 via cisco_ios_telnet (telnet)...
+[+] Conexão estabelecida com sucesso.
+[+] Elevando para modo privilegiado (enable)...
+[OK] Hostname correto: SW-AUTOCONF-01
+[OK] VLAN 10 criada.
+[OK] VLAN 20 criada.
+[OK] VLAN 50 criada.
+[+] Conexão encerrada.
