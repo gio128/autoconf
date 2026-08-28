@@ -1,0 +1,69 @@
+config vpn ipsec phase1-interface
+ config vpn ipsec phase1-interface
+    edit "TO_SITE02"
+        set interface "port1"
+        set ike-version 2
+        set keylife 28800
+        set peertype any
+        set net-device disable
+        set proposal des-sha1
+        set dhgrp 14
+        set remote-gw 172.17.174.179
+        set psksecret teste0102
+    next
+end
+
+config vpn ipsec phase2-interface
+    edit "TO_SITE02"
+        set phase1name "TO_SITE02"
+        set proposal des-sha1
+        set dhgrp 14
+        set auto-negotiate enable
+        set keylifeseconds 3600
+        set src-subnet 10.0.0.0 255.255.255.0
+	set dst-subnet 0.0.0.0 0.0.0.0
+    next
+end
+config system interface
+edit "TO_SITE02"
+        set vdom "root"
+        set ip 169.255.1.2 255.255.255.255
+        set allowaccess ping
+        set type tunnel
+        set remote-ip 169.255.1.1 255.255.255.252
+        set snmp-index 17
+        set interface "port1"
+    next
+end
+
+config router static
+edit 2
+        set dst 10.10.0.0 255.255.255.0
+        set device "TO_SITE02"
+    next
+end
+
+config firewall policy
+edit 0
+        set name "TO_TUNNEL"
+        set srcintf "ZONA_LAN"
+        set dstintf "ZONA_VPN"
+        set action accept
+        set srcaddr "10.0.0.0/24"
+        set dstaddr "10.10.0.0/24"
+        set schedule "always"
+        set service "ALL"
+        set logtraffic all
+    next
+    edit 0
+        set name "FROM_TUNNEL"
+        set srcintf "ZONA_VPN"
+        set dstintf "ZONA_LAN"
+        set action accept
+        set srcaddr "10.10.0.0/24"
+        set dstaddr "10.0.0.0/24"
+        set schedule "always"
+        set service "ALL"
+        set logtraffic all
+    next
+end
